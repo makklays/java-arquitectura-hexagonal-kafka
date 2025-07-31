@@ -57,7 +57,7 @@ src
             │   ├── controller      #   - controladores REST (adaptadores de entrada)
             │   └── client          #   - APIs externas (por ejemplo, clientes REST)
             │
-            └── HexagonalApp.java   # 🚀 Punto de entrada (Spring Boot)
+            └── HexagonalApp.java   # 🚀🇪🇸 Punto de entrada (Spring Boot)
 </pre>
 ---
 
