@@ -1,7 +1,7 @@
 # java-arquitectura-hexagonal-kafka
 Java Arquitectura Hexagonal, Ports, Adapters, Kafka, RabbitMQ
 
-<pre>```
+<pre>
 src
 └── main
     └── java
@@ -19,4 +19,4 @@ src
             │   └── client          #   - внешние API (например, REST clients)
             │
             └── HexagonalApp.java   # 🚀 Точка входа (Spring Boot)
-```</pre>
+</pre>
