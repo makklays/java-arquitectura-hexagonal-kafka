@@ -45,19 +45,19 @@ src
 └── main
     └── java
         └── com.example.project
-            ├── domain              # 🧠 Домен: сущности и порты (интерфейсы)
-            │   ├── model           #   - бизнес-сущности (Entity/ValueObject)
-            │   └── port            #   - порты: интерфейсы входные/выходные
+            ├── domain              # 🧠 Dominio: entidades y puertos (interfaces)
+            │   ├── model           #   - entidades de negocio (Entity/ValueObject)
+            │   └── port            #   - puertos: interfaces de entrada/salida
             │
-            ├── application         # 📘 Use Cases (входные порты + сервисы)
-            │   └── service         #   - реализация бизнес-логики
+            ├── application         # 📘 Casos de uso (puertos de entrada + servicios)
+            │   └── service         #   - implementación de la lógica de negocio
             │
-            ├── infrastructure      # ⚙️ Адаптеры: БД, API, REST, Kafka и т.д.
-            │   ├── persistence     #   - адаптер БД (JPA, JDBC и т.п.)
-            │   ├── controller      #   - REST-контроллеры (входные адаптеры)
-            │   └── client          #   - внешние API (например, REST clients)
+            ├── infrastructure      # ⚙️ Adaptadores: BBDD, API, REST, Kafka, etc.
+            │   ├── persistence     #   - adaptador de base de datos (JPA, JDBC, etc.)
+            │   ├── controller      #   - controladores REST (adaptadores de entrada)
+            │   └── client          #   - APIs externas (por ejemplo, clientes REST)
             │
-            └── HexagonalApp.java   # 🚀🇪🇸 Точка входа (Spring Boot)
+            └── HexagonalApp.java   # 🚀 Punto de entrada (Spring Boot)
 </pre>
 ---
 
