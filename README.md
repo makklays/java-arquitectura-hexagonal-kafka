@@ -1,43 +1,43 @@
-# 🧠 Simple CRM — Hexagonal Architecture + TDD
+# 🧠 Simple CRM — Arquitectura Hexagonal + TDD
 
-**Simple CRM** — это лёгкая CRM-система, реализованная по принципам **Hexagonal Architecture (Ports & Adapters)** с применением **TDD (разработка через тестирование)**.
+**Simple CRM** es un sistema ligero de gestión de clientes, desarrollado con **Arquitectura Hexagonal (Puertos y Adaptadores)** y utilizando **TDD (Desarrollo guiado por pruebas)**.
 
-## 🎯 Назначение
+## 🎯 Propósito
 
-Система предназначена для **малого бизнеса, фрилансеров и команд**, которым нужно:
-- удобно управлять базой клиентов,
-- хранить контакты и историю взаимодействий,
-- быстро находить нужную информацию.
+Este sistema está pensado para **pequeñas empresas, freelancers y equipos** que necesitan:
+- gestionar una base de clientes de forma sencilla,
+- almacenar contactos e historial de interacciones,
+- encontrar rápidamente la información necesaria.
 
-Примеры использования:
-- фрилансер, ведущий список клиентов с пометками;
-- агентство, хранящее контактные данные и детали общения;
-- небольшая команда продаж.
+Ejemplos de uso:
+- un freelancer que quiere organizar sus clientes,
+- una agencia que almacena contactos y notas de conversaciones,
+- un equipo de ventas que necesita seguimiento de interacciones.
 
-## ⚙️ Основной функционал
+## ⚙️ Funcionalidades principales
 
-- 👤 Управление клиентами: добавление, редактирование, удаление
-- 📞 Контактные данные: телефоны, email, мессенджеры
-- 📝 История взаимодействий: звонки, письма, встречи
-- 🔍 Поиск клиентов по имени, email, тегам
-- 🗂️ Категории и сегментация: теги, статусы
+- 👤 Gestión de clientes: crear, editar, eliminar
+- 📞 Datos de contacto: teléfono, correo electrónico, mensajería
+- 📝 Historial de interacciones: llamadas, correos, reuniones
+- 🔍 Búsqueda de clientes por nombre, correo, etiquetas
+- 🗂️ Categorización y segmentación: etiquetas, estado
 
-## 🧱 Архитектура
+## 🧱 Arquitectura
 
-- Чистая **Hexagonal Architecture**: домен не зависит от фреймворков
-- **TDD-подход**: сначала тесты, потом код
-- Входные/выходные порты и адаптеры
-- REST-контроллеры, JPA, и (опционально) Kafka/RabbitMQ
+- Arquitectura **Hexagonal pura**: el dominio no depende del framework
+- Desarrollo con enfoque **TDD**
+- Separación clara entre puertos y adaptadores
+- Controladores REST, JPA y (opcionalmente) Kafka/RabbitMQ
 
-## 🧪 Технологии
+## 🧪 Tecnologías utilizadas
 
 - Java 17+
 - Spring Boot
 - JPA (Hibernate)
 - REST API
 - JUnit + Mockito (TDD)
-- Testcontainers (интеграционные тесты)
-- Kafka или RabbitMQ (по желанию)
+- Testcontainers (para pruebas de integración)
+- Kafka o RabbitMQ (opcional)
 
 Java Arquitectura Hexagonal, Ports, Adapters, Kafka, RabbitMQ
 <pre>
@@ -61,5 +61,5 @@ src
 </pre>
 ---
 
-> ⚠️ Этот проект — учебный, но может стать основой для production-решения.
+> ⚠️ Este proyecto es educativo, pero puede servir como base para una solución real.
 
