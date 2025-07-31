@@ -4,7 +4,7 @@
 
 ## 🎯 Propósito
 
-Este sistema está pensado para **pequeñas empresas, freelancers y equipos** que necesitan:
+Este sistema está pensado para **pequeñas empresas, sector automotriz, sector textil, sector medicine, freelancers y equipos** que necesitan:
 - gestionar una base de clientes de forma sencilla,
 - almacenar contactos e historial de interacciones,
 - encontrar rápidamente la información necesaria.
