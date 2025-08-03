@@ -1,8 +1,7 @@
 package com.techmatrix18.domain.model;
 
 import java.time.LocalDateTime;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 public class Client {
     private final UUID id;
@@ -71,6 +70,101 @@ public class Client {
 
     public Set<String> getTags() {
         return tags;
+    }
+
+    // Примеры поведения
+    // Методы, которые "изменяют" состояние, возвращают **новый объект**
+    public Client updateContactInfo(String newEmail, String newPhone) {
+        return new Client(
+                this.id,
+                this.firstName,
+                this.lastName,
+                Objects.requireNonNull(newEmail),
+                Objects.requireNonNull(newPhone),
+                this.company,
+                this.type,
+                this.registeredAt,
+                this.source,
+                this.tags
+        );
+    }
+
+    public Client updateName(String newFirstName, String newLastName) {
+        return new Client(
+                this.id,
+                Objects.requireNonNull(newFirstName),
+                Objects.requireNonNull(newLastName),
+                this.email,
+                this.phone,
+                this.company,
+                this.type,
+                this.registeredAt,
+                this.source,
+                this.tags
+        );
+    }
+
+    public Client promoteToActive() {
+        return new Client(
+                this.id,
+                this.firstName,
+                this.lastName,
+                this.email,
+                this.phone,
+                this.company,
+                ClientType.ACTIVE,  // меняем тип
+                this.registeredAt,
+                this.source,
+                this.tags
+        );
+    }
+
+    public Client addTag(String tag) {
+        Set<String> newTags = new HashSet<>(this.tags);
+        newTags.add(tag);
+        return new Client(
+                this.id,
+                this.firstName,
+                this.lastName,
+                this.email,
+                this.phone,
+                this.company,
+                this.type,
+                this.registeredAt,
+                this.source,
+                Collections.unmodifiableSet(newTags)  // чтобы не нарушать иммутабельность
+        );
+    }
+
+    public Client removeTag(String tag) {
+        Set<String> newTags = new HashSet<>(this.tags);
+        newTags.remove(tag);
+        return new Client(
+                this.id,
+                this.firstName,
+                this.lastName,
+                this.email,
+                this.phone,
+                this.company,
+                this.type,
+                this.registeredAt,
+                this.source,
+                Collections.unmodifiableSet(newTags)
+        );
+    }
+
+    // equals / hashCode по id
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return id.equals(client.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }
 

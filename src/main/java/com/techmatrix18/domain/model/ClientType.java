@@ -4,6 +4,6 @@ public enum ClientType {
     REGULAR,
     VIP,
     POTENTIAL,
-    CORPORATE
+    ACTIVE, CORPORATE
 }
 
