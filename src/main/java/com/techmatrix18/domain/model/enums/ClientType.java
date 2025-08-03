@@ -1,4 +1,4 @@
-package com.techmatrix18.domain.model;
+package com.techmatrix18.domain.model.enums;
 
 public enum ClientType {
     REGULAR,

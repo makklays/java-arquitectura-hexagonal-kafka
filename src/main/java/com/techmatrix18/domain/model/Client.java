@@ -1,5 +1,7 @@
 package com.techmatrix18.domain.model;
 
+import com.techmatrix18.domain.model.enums.ClientType;
+
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -15,9 +17,11 @@ public class Client {
     private final String source;
     private final Set<String> tags;
 
+    private final Long ownerId;              // ID пользователя - владельца клиента
+
     public Client(UUID id, String firstName, String lastName, String email,
                   String phone, String company, ClientType type,
-                  LocalDateTime registeredAt, String source, Set<String> tags) {
+                  LocalDateTime registeredAt, String source, Set<String> tags, Long ownerId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,6 +32,7 @@ public class Client {
         this.registeredAt = registeredAt != null ? registeredAt : LocalDateTime.now();
         this.source = source;
         this.tags = tags;
+        this.ownerId = ownerId;
     }
 
     // getters
@@ -72,6 +77,8 @@ public class Client {
         return tags;
     }
 
+    public Long getOwnerId() { return ownerId; }
+
     // Примеры поведения
     // Методы, которые "изменяют" состояние, возвращают **новый объект**
     public Client updateContactInfo(String newEmail, String newPhone) {
@@ -85,7 +92,8 @@ public class Client {
                 this.type,
                 this.registeredAt,
                 this.source,
-                this.tags
+                this.tags,
+                this.ownerId
         );
     }
 
@@ -100,7 +108,8 @@ public class Client {
                 this.type,
                 this.registeredAt,
                 this.source,
-                this.tags
+                this.tags,
+                this.ownerId
         );
     }
 
@@ -115,7 +124,8 @@ public class Client {
                 ClientType.ACTIVE,  // меняем тип
                 this.registeredAt,
                 this.source,
-                this.tags
+                this.tags,
+                this.ownerId
         );
     }
 
@@ -132,7 +142,8 @@ public class Client {
                 this.type,
                 this.registeredAt,
                 this.source,
-                Collections.unmodifiableSet(newTags)  // чтобы не нарушать иммутабельность
+                Collections.unmodifiableSet(newTags),  // чтобы не нарушать иммутабельность
+                this.ownerId
         );
     }
 
@@ -149,7 +160,8 @@ public class Client {
                 this.type,
                 this.registeredAt,
                 this.source,
-                Collections.unmodifiableSet(newTags)
+                Collections.unmodifiableSet(newTags),
+                this.ownerId
         );
     }
 

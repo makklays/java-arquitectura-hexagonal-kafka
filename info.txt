@@ -1,9 +1,116 @@
 
+
+Архитектура Гексагональная
+
+🧩 Краткое пояснение структуры:
+    domain/ — твои бизнес-модели, ничего не знают о REST, БД и Spring.
+    application/ — use cases (сценарии), бизнес-правила, координация логики.
+    infrastructure/ — реализация портов: JPA, мапперы, репозитории.
+    adapter/web/ — REST-контроллеры и DTO.
+    port/in/ — интерфейсы, которые вызываются извне (например, из контроллера).
+    port/out/ — интерфейсы, которые реализуются в инфраструктуре (например, JPA).
+
+❓ Почему такая структура хороша:
+    Разделение домена и фреймворка (Spring Boot можно заменить без боли).
+    Чёткая граница между бизнес-логикой и техническими деталями.
+    Удобна для тестирования и масштабирования.
+    Используется в реальных проектах и микросервисах.
+
+
+📦 Структура проекта (hexagonal)
+
+src/main/java/com/example/crm/
+├── application/                # Сервисный слой (use cases)
+│   ├── service/
+│   │   ├── ClientService.java
+│   │   └── UserService.java
+│   └── port/
+│       ├── in/                 # Входные порты (interfaces вызываемые извне)
+│       │   ├── CreateClientUseCase.java
+│       │   └── GetClientsUseCase.java
+│       └── out/                # Выходные порты (интерфейсы к БД, внешним API и т.д.)
+│           ├── ClientRepository.java
+│           └── UserRepository.java
+
+├── domain/                    # Доменный слой
+│   └── model/
+│       ├── Client.java
+│       ├── User.java
+│       ├── Role.java
+│       ├── Status.java
+│       └── enums/             # Доп. перечисления
+│           ├── ClientType.java
+│           └── InteractionType.java
+
+├── infrastructure/            # Технические реализации (БД, web, и т.д.)
+│   ├── persistence/
+│   │   ├── entity/
+│   │   │   ├── ClientEntity.java
+│   │   │   └── UserEntity.java
+│   │   ├── mapper/
+│   │   │   ├── ClientMapper.java
+│   │   │   └── UserMapper.java
+│   │   └── repository/
+│   │       ├── ClientRepositoryImpl.java
+│   │       └── UserRepositoryImpl.java
+│   └── config/
+│       └── SecurityConfig.java
+
+├── adapter/                   # Входные адаптеры: REST, CLI, events
+│   └── web/
+│       ├── controller/
+│       │   ├── ClientController.java
+│       │   └── UserController.java
+│       └── dto/
+│           ├── CreateClientRequest.java
+│           └── ClientResponse.java
+
+└── HexagonalApp.java        # Главный класс Spring Boot
+
+
 Разработка TDD:
 🔁 Цикл TDD: Red → Green → Refactor
     Red – написать тест, который проваливается (ожидаемое поведение ещё не реализовано).
     Green – написать минимальную реализацию, чтобы тест прошёл.
     Refactor – улучшить код, не ломая тесты.
+
+
+📤 Отправка сообщений
+@Service
+public class KafkaProducer {
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+
+    public KafkaProducer(KafkaTemplate<String, Object> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    public void send(String topic, Object message) {
+        kafkaTemplate.send(topic, message);
+        System.out.println("✅ Sent to Kafka: " + message);
+    }
+}
+
+📥 Получение сообщений
+@Component
+public class KafkaConsumer {
+    @KafkaListener(topics = "clients-topic", groupId = "crm-group")
+    public void listen(Object message) {
+        System.out.println("📩 Received from Kafka: " + message);
+    }
+}
+
+📌 Использование
+@RestController
+@RequiredArgsConstructor
+public class ClientController {
+    private final KafkaProducer kafkaProducer;
+
+    @PostMapping("/send")
+    public ResponseEntity<?> send(@RequestBody ClientDTO client) {
+        kafkaProducer.send("clients-topic", client);
+        return ResponseEntity.ok("Sent!");
+    }
+}
 
 
 //
