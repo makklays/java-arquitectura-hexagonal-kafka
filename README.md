@@ -61,11 +61,13 @@ src
 </pre>
 ---
 
-<img src="./src/main/resources/images/22.png" width="150" />
-<img src="./src/main/resources/images/call-neo.png" width="150" />
-<img src="./src/main/resources/images/11.png" width="150" />
-<img src="./src/main/resources/images/call-neo2.png" width="150" />
-<img src="./src/main/resources/images/33.png" width="150" />
+<p align="left">
+    <img src="./src/main/resources/images/22.png" width="150" />
+    <img src="./src/main/resources/images/call-neo.png" width="150" />
+    <img src="./src/main/resources/images/11.png" width="150" />
+    <img src="./src/main/resources/images/call-neo2.png" width="150" />
+    <img src="./src/main/resources/images/33.png" width="150" />
+</p>
 
 > ⚠️ Este proyecto es educativo, pero puede servir como base para una solución real.
 
