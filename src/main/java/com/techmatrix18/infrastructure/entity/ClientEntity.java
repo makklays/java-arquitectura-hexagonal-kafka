@@ -6,10 +6,16 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Client entity
+ *
+ * @version 1.0
+ * @author  Alexander Kuziv
+ */
+
 @Entity
 @Table(name = "clients")
 public class ClientEntity {
-
     @Id
     private UUID id;
 
@@ -17,8 +23,8 @@ public class ClientEntity {
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
-    private String lastName;
 
+    private String lastName;
     private String email;
     private String phone;
     private String company;
@@ -28,7 +34,6 @@ public class ClientEntity {
 
     @Column(name = "registered_at")
     private LocalDateTime registeredAt;
-
     private String source;
 
     @ElementCollection(fetch = FetchType.EAGER)

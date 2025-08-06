@@ -4,6 +4,13 @@ import com.techmatrix18.domain.model.Client;
 import com.techmatrix18.domain.model.enums.ClientType;
 import com.techmatrix18.infrastructure.entity.ClientEntity;
 
+/**
+ * Client mapper
+ *
+ * @version 1.0
+ * @author  Alexander Kuziv
+ */
+
 public class ClientMapper {
 
     public static ClientEntity toEntity(Client client) {

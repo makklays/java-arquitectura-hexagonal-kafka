@@ -1,9 +1,15 @@
 package com.techmatrix18.domain.model;
 
 import com.techmatrix18.domain.model.enums.ClientType;
-
 import java.time.LocalDateTime;
 import java.util.*;
+
+/**
+ * Client model
+ *
+ * @version 1.0
+ * @author  Alexander Kuziv
+ */
 
 public class Client {
     private final UUID id;
